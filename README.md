@@ -1,5 +1,5 @@
 # Nebula
 Personal Nebula Writeups
 
-## Level completed
+## Levels completed
 - [Level00](level00/README.md)
