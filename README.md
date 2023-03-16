@@ -9,3 +9,4 @@ My personal Nebula Writeups. The link to this virtual machine is available [here
 - [Level04](level04/README.md)
 - [Level05](level05/README.md)
 - [Level06](level06/README.md)
+- [Level07](level07/README.md)
