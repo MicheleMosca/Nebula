@@ -9,7 +9,7 @@ To do this level, log in as the **level03** account with the password level03. F
 There is no source code available for this level.
 
 ## Writeup
-In /home/flag03 there is a bash script and a directory:
+In /home/flag03 there is a bash script and a directory with weak privileges:
 
 ```bash
 level03@nebula:/home/flag03$ ll
