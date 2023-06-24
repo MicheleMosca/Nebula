@@ -107,3 +107,26 @@ We can run the **getflag** program:
 sh-4.2$ getflag
 You have successfully executed getflag on a target account
 ```
+
+## Mitigation #1
+
+We can move the hash of the password in the **/etc/shadow** file:
+
+```bash
+sed "s/flag06:\!:/flag06:ueqwOCnSGdsuM:/" /etc/shadow -i
+```
+
+And insert an **x** in the file **/etc/passwd**:
+
+```bash
+sed "s/flag06:ueqwOCnSGdsuM:/flag06:x:/" /etc/passwd -i
+```
+
+Now **level06** can't find the hash of the password:
+
+```bash
+level06@nebula:/home/flag06$ grep flag06 /etc/passwd
+flag06:x:993:993::/home/flag06:/bin/sh
+level06@nebula:/home/flag06$ grep flag06 /etc/shadow
+grep: /etc/shadow: Permission denied
+```

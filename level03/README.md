@@ -110,3 +110,44 @@ Finally, run **getflag** command:
 bash-4.2$ getflag
 You have successfully executed getflag on a target account
 ```
+
+## Mitigation #1
+
+The **/home/flag03/writable.d** directory have **777** access permission:
+
+```
+drwxrwxrwx 2 flag03 flag03 3 2012-08-18 05:24 writable.d/
+```
+
+We can change his permission to only user of **flag03** group.
+
+Change the work group of **/home/flag03**:
+
+```bash
+chgrp flag03 /home/flag03
+```
+
+Make the access of **flag03 home directory** to only the user **flag03**:
+
+```bash
+chmod 700 /home/flag03
+```
+
+If we want to give access to **flag03 group members**:
+
+```bash
+chmod 750 /home/flag03
+```
+
+Now the user **level03** can't access to the directory **/home/flag03/writable.d**:
+
+```bash
+level03@nebula:~$ cp bash.sh /home/flag03/writable.d
+cp: accessing `/home/flag03/writable.d': Permission denied
+```
+
+Is also good set correct privileges to the **/home/flag03/writable.d** directory:
+
+```bash
+chmod 700 /home/flag03/writable.d
+```
